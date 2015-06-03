@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>apithaifirstapp</title>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    <script>
+        // Additional JS functions here
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '813648275371754', // App ID
+                channelUrl : 'localhost', // Channel File
+                oauth         : true,
+                status     : true, // check login status
+                cookie     : true, // enable cookies to allow the server to access the session
+                xfbml      : true  // parse XFBML
+            });
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') { // connected
+                    var uid = response.authResponse.userID;
+                    var accessToken = response.authResponse.accessToken;
+
+                    FB.api( '/me', function(response) {
+                        id = response.id;
+                        name = response.name;
+
+                        document.getElementById('logout').style.display = "block";
+                        document.getElementById('login').style.display = "none";
+                        document.getElementById('name').innerHTML  = name;
+                        document.getElementById('id').innerHTML  = id;
+                    });
+                } else if (response.status === 'not_authorized') {    // not_authorized
+                    document.getElementById('logout').style.display = "none";
+                    fb_login();
+                } else { // not_logged_in
+                    document.getElementById('logout').style.display = "none";
+                    fb_login();
+                }
+            });
+        };
+
+        // Load the SDK Asynchronously
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+        function fb_login() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    access_token = response.authResponse.accessToken; //get access token
+                    user_id = response.authResponse.userID; //get FB UID
+
+                    FB.api('/me', function(response) {
+                        id = response.id;
+                        name = response.name;
+                        window.location = 'starter.html';
+
+                    });
+                } else {
+                    alert('Fail');    // cancelled
+                }
+            });
+        }
+
+        function fb_logout(){
+            FB.logout(function(response) {
+                document.getElementById('login').style.display = "block";
+                document.getElementById('logout').style.display = "none";
+                window.location = 'index.php';
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="fb-root"></div>
+
+<a id="login" onclick="fb_login();" href="#">Login</a>
+<a id="logout" onclick="fb_logout();" href="#" style="display:none;">Logout</a>
+<p>สวัสดีครับ</p>
+
+<div id="id"></div>
+<div id="name"></div>
+</body>
+</html>
