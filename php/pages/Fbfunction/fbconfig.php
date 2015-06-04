@@ -14,9 +14,9 @@ use Facebook\Entities\AccessToken;
 use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 // init app with app id and secret
-FacebookSession::setDefaultApplication( '813648275371754','Your APP Secret' );
+FacebookSession::setDefaultApplication( '813648275371754','caaa93f0a9d977acca43ed3975d678b1' );
 // login helper with redirect_uri
-    $helper = new FacebookRedirectLoginHelper('http://demos.krizna.com/1353/fbconfig.php' );
+    $helper = new FacebookRedirectLoginHelper('http://localhost:63342/NctApp/starter.html' );
 try {
   $session = $helper->getSessionFromRedirect();
 } catch( FacebookRequestException $ex ) {
