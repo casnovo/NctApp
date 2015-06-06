@@ -8,7 +8,7 @@ session_start();
  */
 ?>
 <!DOCTYPE html>
-<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Log in</title>
@@ -61,7 +61,7 @@ session_start();
 
         <div class="social-auth-links text-center">
             <p>- OR -</p>
-            <a href="php/pages/Fbfunction/fbconfig.php" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+            <a href="fbconfig.php" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
             <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
         </div><!-- /.social-auth-links -->
 
