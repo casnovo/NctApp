@@ -206,21 +206,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="row" ng-controller="dataCtrl">
 
                               <div class="col-md-12">
-                                  <ul>
+                                  <!--
+                                 <ul>
 
-                                      <li ng-repeat="x in names |filter:qunit" ng-init="i=0">
+                                     <li ng-repeat="x in names |filter:qunit" ng-init="i=0">
 
-                                          {{ x.rid + ', ' + x.uid+ ', ' + x.rplace+ ', ' + x.rsus[0].rname }}
-                                          <br>ผู้ต้องหา:{{x.rsus.length}} คน
-                                          <ul>
-                                              <li ng-repeat="y in x.rsus">
-                                                  {{y.rname}}
-                                              </li>
-                                          </ul>
-                                      </li>
-                                  </ul>
+                                         {{ x.rid + ', ' + x.uid+ ', ' + x.rplace+ ', ' + x.rsus[0].rname }}
+                                         <br>ผู้ต้องหา:{{x.rsus.length}} คน
+                                         <ul>
+                                             <li ng-repeat="y in x.rsus">
+                                                 {{y.rname}}
+                                             </li>
+                                         </ul>
+                                     </li>
+                                 </ul>
 
-                                  <!-- Custom Tabs -->
+                                Custom Tabs -->
                                   <div class="nav-tabs-custom">
                                       <ul class="nav nav-tabs">
                                           <li class="active"><a href="#tab_1" data-toggle="tab">สรุปผลการจับกุม</a></li>
