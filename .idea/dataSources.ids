@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - nctapp@localhost" uuid="6a3cef38-7367-4e92-a60b-b102592e9656">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="nctapp"/>
+    <table name="commander" schema="" catalog="nctapp" type="TABLE">
+      <column name="cid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq" autoIncrement="true"/>
+      <column name="crank" sqlType="VARCHAR" precision="6" scale="0" nullable="false" jdbcType="12" remarks="4Lii4Lio"/>
+      <column name="cname" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit"/>
+      <column name="cposition" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" remarks="4LiV4Liz4LmB4Lir4LiZ4LmI4LiH"/>
+      <primary-key name="PRIMARY" columns="cid"/>
+    </table>
+    <table name="evidence" schema="" catalog="nctapp" type="TABLE">
+      <column name="edid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4LiC4Lit4LiH4LiB4Lil4Liy4LiH" autoIncrement="true"/>
+      <column name="rid" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12" remarks="4Lij4Lir4Lix4Liq4LiI4Lix4Lia4LiB4Li44Lih"/>
+      <column name="eid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4Lib4Lij4Liw4LmA4Lig4LiX4LiC4Lit4LiH4LiB4Lil4Liy4LiH"/>
+      <column name="ecount" sqlType="DOUBLE" precision="6" scale="2" nullable="false" jdbcType="8" remarks="4LiI4Liz4LiZ4Lin4LiZ"/>
+      <column name="ecost" sqlType="DOUBLE" precision="10" scale="2" nullable="false" jdbcType="8" remarks="4Lih4Li54Lil4LiE4LmI4Liy"/>
+      <primary-key name="PRIMARY" columns="edid"/>
+    </table>
+    <table name="kindevidence" schema="" catalog="nctapp" type="TABLE">
+      <column name="eid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4Lib4Lij4Liw4LmA4Lig4LiX4LiC4Lit4LiH4LiB4Lil4Liy4LiH" autoIncrement="true"/>
+      <column name="sname" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4Lii4LmI4Lit"/>
+      <column name="fname" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4LmA4LiV4LmH4Lih"/>
+      <column name="counts" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="4LiI4Liz4LiZ4Lin4LiZ4LiZ4Lix4Lia"/>
+      <column name="cost" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Liy4LiE4Liy4LiV4LmI4Lit4Lir4LiZ4LmI4Lin4Lii"/>
+      <primary-key name="PRIMARY" columns="eid"/>
+    </table>
+    <table name="report" schema="" catalog="nctapp" type="TABLE">
+      <column name="rid" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12" remarks="4LmA4Lil4LiC4LiX4Li14LmI4Lir4LiZ4Lix4LiH4Liq4Li34Lit4Lij4Lix4Lia"/>
+      <column name="uid" sqlType="VARCHAR" precision="3" scale="0" nullable="false" jdbcType="12" remarks="4Lij4Lir4Lix4Liq4LiK4Li44LiU4LiI4Lix4Lia4LiB4Li44Lih"/>
+      <column name="rdate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91" remarks="4Lin4Lix4LiZ4LiX4Li14LmI4LiI4Lix4Lia4LiB4Li44Lih"/>
+      <column name="rplace" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" remarks="4Liq4LiW4Liy4LiZ4LiX4Li14LmI4LiI4Lix4Lia4LiB4Li44Lih"/>
+      <column name="rdetiil" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1" remarks="4Lij4Liy4Lii4Lil4Liw4LmA4Lit4Li14Lii4LiU4LiK4Li44LiU4LiI4Lix4Lia4LiB4Li44Lih"/>
+      <column name="rsus" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4LiI4Liz4LiZ4Lin4LiZKOC4hOC4mSk="/>
+      <column name="rstation" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" remarks="4Liq4LiW4Liy4LiZ4Li14LiV4Liz4Lij4Lin4LiI"/>
+      <column name="rprovince" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4LiI4Lix4LiH4Lir4Lin4Lix4LiU"/>
+      <column name="crimeid" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12" remarks="4LiE4LiU4Li14Lit4Liy4LiN4Liy4LiX4Li14LmI"/>
+      <column name="caseid" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12" remarks="4Lii4Li24LiU4LiX4Lij4Lix4Lie4Lii4LmM4LiX4Li14LmI"/>
+      <primary-key name="PRIMARY" columns="rid"/>
+      <index name="rdate" unique="false" columns="rdate"/>
+    </table>
+    <table name="sus" schema="" catalog="nctapp" type="TABLE">
+      <column name="sid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4Lic4Li54LmJ4LiV4LmJ4Lit4LiH4Lir4Liy" autoIncrement="true"/>
+      <column name="rid" sqlType="VARCHAR" precision="7" scale="0" nullable="false" jdbcType="12" remarks="4LmA4Lil4LiC4LiX4Li14LmI4Lir4LiZ4Lix4LiH4Liq4Li34Lit4Lij4Lix4Lia"/>
+      <column name="sname" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit"/>
+      <column name="sage" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lit4Liy4Lii4Li4"/>
+      <column name="saddress" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12" remarks="4LiX4Li14LmI4Lit4Lii4Li54LmI"/>
+      <column name="sex" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" remarks="4LmA4Lie4Lio"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+    </table>
+    <table name="unit" schema="" catalog="nctapp" type="TABLE">
+      <column name="uid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4LiK4Li44LiU4LiI4Lix4Lia4LiB4Li44Lih" autoIncrement="true"/>
+      <column name="company" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4Lir4LiZ4LmI4Lin4Lii4Lir4Lil4Lix4LiB"/>
+      <column name="uhead" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4Lir4Lix4Lin4Lir4LiZ4LmJ4Liy4LiK4Li44LiU"/>
+      <column name="utel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="4LmA4Lia4Lit4Lij4LmM4LmC4LiX4Lij4LiV4Li04LiU4LiV4LmI4LitIOC4q+C4seC4p+C4q+C4meC5ieC4suC4iuC4uOC4lA=="/>
+      <primary-key name="PRIMARY" columns="uid"/>
+    </table>
+  </data-source>
+</component>
