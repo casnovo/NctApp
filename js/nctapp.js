@@ -7,5 +7,10 @@ app.controller("dataCtrl", function ($scope, $http) {
             $scope.names = response.data;
 
         });
+app.controller("keCtrl", function ($scope, $http){
+    $scope.name = "datacontroller";
+    $scope.ver = "1.0";
+});
+
 
 });
