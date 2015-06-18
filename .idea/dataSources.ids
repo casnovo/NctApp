@@ -54,11 +54,11 @@
       <primary-key name="PRIMARY" columns="sid"/>
     </table>
     <table name="unit" schema="" catalog="nctapp" type="TABLE">
-      <column name="uid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Lir4Lix4Liq4LiK4Li44LiU4LiI4Lix4Lia4LiB4Li44Lih" autoIncrement="true"/>
-      <column name="company" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4Lir4LiZ4LmI4Lin4Lii4Lir4Lil4Lix4LiB"/>
+      <column name="uid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="company" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="uhead" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4Lir4Lix4Lin4Lir4LiZ4LmJ4Liy4LiK4Li44LiU"/>
       <column name="utel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="4LmA4Lia4Lit4Lij4LmM4LmC4LiX4Lij4LiV4Li04LiU4LiV4LmI4LitIOC4q+C4seC4p+C4q+C4meC5ieC4suC4iuC4uOC4lA=="/>
-      <primary-key name="PRIMARY" columns="uid"/>
+      <primary-key name="PRIMARY" columns="company"/>
     </table>
   </data-source>
 </component>

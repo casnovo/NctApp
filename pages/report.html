@@ -30,6 +30,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <style type="text/css">
+        .css-form input.ng-invalid.ng-touched {
+            background-color: #FA787E;
+        }
+
+        .css-form input.ng-valid.ng-touched {
+            background-color: #78FA89;
+        }
+    </style>
 
     <![endif]-->
 </head>
@@ -53,7 +62,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini" >
 <div class="wrapper">
     <div id="fb-root"></div>
 
@@ -175,9 +184,10 @@ desired effect
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" ng-controller="frmCtrl">
 
-            <form role="form" id="myform"><!-- Your Page Content Here -->
+            <form name="myForm" role="form" ng-submit="submitMyForm(fields)" novalidate><!-- Your Page Content Here -->
+
                 <div class="box box-solid box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">ระบบรายงานการจับกุม</h3>
@@ -189,7 +199,6 @@ desired effect
                     </div><!-- /.box-header -->
 
                     <div class="box-body">
-
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="box box-solid box-success">
@@ -198,23 +207,23 @@ desired effect
                                     </div><!-- /.box-header -->
                                     <div class="box-body">
 
-                                        <div class="form-group has-feedback">
+                                        <div class="form-group  " ng-class="{'has-error': myForm.rid.$invalid && !myForm.rid.$pristine}">
                                             <label>ที่หนังสือรับ</label>
-                                            <input type="text" id="rid" class="form-control " placeholder="เลขหนังสือรับ/ปี" />
-
+                                            <input type="text" name="rid" class="form-control " placeholder="เลขหนังสือรับ/ปี" ng-model="fields.rid" required />
+                                            <span ng-show="myForm.rid.$error.required && !myForm.rid.$pristine" class="text-danger">กรุณากรอกข้อมูล</span>
                                         </div>
-                                        <div class="form-group has-feedback">
+                                        <div class="form-group " ng-class="{'has-error': myForm.rid2.$invalid && !myForm.rid2.$pristine}">
                                             <label>รับแจ้งจาก</label>
-                                            <input type="text" id="rid2" class="form-control " placeholder="" />
-
+                                            <input type="text" name="rid2" class="form-control " placeholder="" ng-model="fields.rid2" required />
+                                            <span ng-show="myForm.rid2.$error.required && !myForm.rid2.$pristine" class="text-danger">กรุณากรอกข้อมูล</span>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <label>วันที่จับกุม</label>
-                                            <div class='input-group date' id='rdates'>
-                                                <input type='text' class="form-control"  id='rdate'  />
-                    			<span class="input-group-addon">
-                        		<span class="glyphicon glyphicon-calendar"></span>
-                   				</span>
+                                            <div class='input-group date'  id='rdates' >
+                                                <input type='text' class="form-control" id="rdate" />
+                                                <span class="input-group-addon">
+                        		                    <span class="glyphicon glyphicon-calendar"></span>
+                   				                </span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -226,56 +235,52 @@ desired effect
                     				</span>
                                             </div>
                                         </div>
-                                        <div class="form-group ">
+                                        <div class="form-group " ng-class="{'has-error': myForm.rplace.$invalid && !myForm.rplace.$pristine}">
                                             <label>เหตุเกิดที่</label>
-                                            <input type="text" id="rplace" class="form-control" placeholder="" />
+                                            <input type="text" name="rplace" class="form-control " placeholder="เลขหนังสือรับ/ปี" ng-model="fields.rplace" required />
+                                            <span ng-show="myForm.rplace.$error.required && !myForm.rplace.$pristine" class="text-danger">กรุณากรอกข้อมูล</span>
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="form-group" >
                                             <label>หน่วยจับกุม</label>
-                                            <select class="form-control"  >
-
-                                                <option value='001'>หน่วย:&nbsp;$row[company]&nbsp;$row[uhead] </option>
-
-
+                                            <select class="form-control" ng-model="fields.uid"
+                                                    ng-options="x as x.uhead for x in datasUnit">
                                             </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>ชุดจับกุม</label>
-                                            <textarea class="form-control" id="rcdetiil" rows="4" placeholder="" ></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                                <label>หน่วยจับกุม</label>
-                                                <select class="form-control" id="uid" >
 
-                                                    <option value='$row[uid]'>หน่วย:&nbsp;$row[company]&nbsp;$row[uhead] </option>
-                                                </select>
                                         </div>
+
+                                        <div class="form-group" >
+                                            <label>ชุดจับกุม</label>
+                                            <textarea class="form-control" name="rcdetiil" rows="4" placeholder="" ng-model="fields.udetiil" required ></textarea>
+
+                                        </div>
+
                                         <div class="form-group ">
-                                            <label>ผู้ต้องหา </label>
-                                            <input type="text" id="rsus" class="form-control" placeholder="" onkeyup="showHint(this.value)"/>
+                                            <label>ผู้ต้องหา</label>
+                                        <input type="text" id="rsus" class="form-control" placeholder="" onkeyup="showHint(this.value)" ng-model="fields.rsus" />
                                         </div>
 
                                         <div class="form-group">
                                             <label>โดยกล่าวหาว่า</label>
-                                            <textarea class="form-control" id="rlm" rows="4" placeholder=""  />
+                                            <textarea class="form-control" id="rlm" rows="4" placeholder=""  ng-model="fields.rlm"></textarea>
                                         </div>
                                         <div class="form-group ">
                                             <label>นำของกลางผู้ต้องหาส่ง พงส.สภ.</label>
-                                            <input type="text" id="rstation" class="form-control" placeholder=""  />
+                                            <input type="text" id="rstation" class="form-control" placeholder="" ng-model="fields.rstation" />
                                         </div>
                                         <div class="form-group">
                                             <label>จังหวัด</label>
-                                            <select class="form-control" id="rstationp">
-                                                <option>นครศรีธรรมราช</option>
-                                                <option>กระบี่</option>
-                                                <option>ภูเก็ต</option>
-                                                <option>พังงา</option>
+                                        <select class="form-control" id="rstationp" ng-model="fields.rstationp" >
+                                            <option>นครศรีธรรมราช</option>
+                                            <option>กระบี่</option>
+                                            <option>ภูเก็ต</option>
+                                            <option>พังงา</option>
 
-                                            </select>
-                                        </div>
+                                        </select>
+                                    </div>
                                         <div class="form-group ">
                                             <label>ปจว.ข้อที่,คดีอาญาที่,ยึดทรัพย์ที่,</label>
-                                            <input type="text" id="rstationd" class="form-control" placeholder=""  />
+                                            <input type="text" id="rstationd" class="form-control" placeholder="" ng-model="fields.rstationd" />
                                         </div>
                                         <div class="form-group">
                                             <label>ลงวันที่</label>
@@ -297,30 +302,40 @@ desired effect
                                         </div>
                                         <div class="form-group ">
                                             <label>โดยมี เป็น พงส.</label>
-                                            <input type="text" id="rstationd2" class="form-control" placeholder=""  />
+                                            <input type="text" id="rstationd2" class="form-control" placeholder=""  ng-model="frm.rstationd2"/>
                                         </div>
                                         <div class="form-group">
                                             <label>ผู้อนุมัติข่าว</label>
-                                            <select class="form-control" id="cid" >
-
-                                                <option value='[{"crank":"$row[crank]","cname":"$row[cname] ","cpos":"$row[cposition]"}]'>$row[crank] $row[cname]</option>
-
+                                            <select class="form-control" ng-model="fields.command"
+                                                    ng-options="x as x.cname for x in datasCm">
                                             </select>
+
                                         </div>
                                         <div class="form-group">
-
-                                            <select class="form-control" id="opc">
+                                            <select class="form-control" id="opc" ng-model="frm.opc" >
                                                 <option value="">ผกก.ลงนาม</option>
                                                 <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
                                                 <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
-
-
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ประเภทคดี</label>
+                                            <select class="form-control"  ng-model="frm.d1" >
+                                                <option value="">ผกก.ลงนาม</option>
+                                                <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
+                                                <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ความสำคัญของคดี</label>
+                                            <select class="form-control"  ng-model="frm.d2" >
+                                                <option value="">ผกก.ลงนาม</option>
+                                                <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
+                                                <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                             <div class="col-md-4" >
                                 <div class="box box-solid box-success">
@@ -328,27 +343,27 @@ desired effect
                                         <h3 class="box-title">ของกลาง</h3>
                                     </div><!-- /.box-header -->
                                     <div class="box-body" >
+                                        <div class="form-group" >
+                                            <div class="checkbox" ng-repeat="x in datasKe" >
 
-                                        <div class="form-group">
-
-                                            <div class="checkbox" >
                                                 <label>
-                                                    <input type="checkbox"  value='{"eid":"$row[eid]","efn":"$row[fname]","counts":"$row[counts]","cost":"{{name$b}}"}'/>
-
+                                                    <input type="checkbox" checklist-model="user.datasKe" checklist-value="x">
+                                                    {{ x.fname}}
                                                 </label>
-                                                <input id ='' type="text" class="form-control" placeholder="" ng-model=""/>
+                                                <input type="text" class="form-control" placeholder="{{x.counts}}" />
                                             </div>
+                                        </div>
 
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" id="chk" value='{"eid":"000","efn":"{{av2}}","counts":"{{av3}}","cost":"{{av5}}"}'/>
+                                                    <input type="checkbox" id="chk" value=''/>
                                                     อื่นๆ
                                                 </label>
-                                                <input type="text" id="av1" class="form-control" placeholder="ชื่อย่อ" ng-model="av1"/>
-                                                <input type="text" id="av2" class="form-control" placeholder="ชื่อเต็ม" ng-model="av2"/>
-                                                <input type="text" id="av3" class="form-control" placeholder="หน่วย" ng-model="av3"/>
-                                                <input type="text" id="av4" class="form-control" placeholder="ราคา" ng-model="av4"/>
-                                                <input type="text" id="av5" class="form-control" placeholder="จำนวน" ng-model="av5"/>
+                                                <input type="text" id="av1" class="form-control" placeholder="ชื่อย่อ" />
+                                                <input type="text" id="av2" class="form-control" placeholder="ชื่อเต็ม" />
+                                                <input type="text" id="av3" class="form-control" placeholder="หน่วย" />
+                                                <input type="text" id="av4" class="form-control" placeholder="ราคา" />
+                                                <input type="text" id="av5" class="form-control" placeholder="จำนวน" />
                                             </div>
                                             <div class="form-group">
                                                 <label>ของกลางอื่น</label>
@@ -356,10 +371,8 @@ desired effect
                                             </div>
 
 
-
                                         </div>
                                     </div>
-                                </div>
                             </div>
                             <div class="col-md-4" >
                                 <div class="box box-solid box-success">
@@ -372,18 +385,16 @@ desired effect
 
                                 </div><!-- /.box -->
                             </div>
-
                         </div>
-
-
                     </div>
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-md-4">
+                                <button type="submit">ทดสอบ</button>
                                 <p class="success" ></p>
                             </div>
                             <div class="col-md-4" align="center">
-                                <a class="btn btn-app">
+                                <a class="btn btn-app" type="submit">
                                     <i class="fa fa-save"></i> บันทึก
                                 </a>
                                 <a class="btn btn-app" id = "btp1" onClick="printData1()">
@@ -392,19 +403,17 @@ desired effect
                                 <a class="btn btn-app" id = "btp2" onClick="printData2()">
                                     <i class="fa fa-print"></i> พิมพ์วิทยุ
                                 </a>
-                                <a class="btn btn-app" id = "btp3" onClick="printData3()">
-                                    <i class="fa fa-print"></i> พิมพ์วิทยุ(สำเนา)
-                                </a>
                             </div>
                             <div class="col-md-4">
                             </div>
                         </div>
                     </div>
 
-                </div>
+</div>
                 <br>
 
             </form>
+
             <!-- /.row -->
 
         </section>
@@ -513,7 +522,8 @@ desired effect
 <script src="//connect.facebook.net/en_US/all.js"></script>
 <script src="../js/fblogin.js"></script>
 <script src="../js/nctapp.js"></script>
-<script src="../js/reportapp.js"></script>
+<script src="../js/chkmodel.js"></script>
+
 <script src="../plugins/datetimepicker/moment-with-locales.min.js"></script>
 <script src="../plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="../plugins/datetimepicker/collapse.js"></script>
