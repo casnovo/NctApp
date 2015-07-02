@@ -302,7 +302,7 @@ desired effect
                                         </div>
                                         <div class="form-group ">
                                             <label>โดยมี เป็น พงส.</label>
-                                            <input type="text" id="rstationd2" class="form-control" placeholder=""  ng-model="frm.rstationd2"/>
+                                            <input type="text" id="rstationd2" class="form-control" placeholder=""  ng-model="fields.rstationd2"/>
                                         </div>
                                         <div class="form-group">
                                             <label>ผู้อนุมัติข่าว</label>
@@ -312,7 +312,7 @@ desired effect
 
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control" id="opc" ng-model="frm.opc" >
+                                            <select class="form-control" id="opc" ng-model="fields.opc" >
                                                 <option value="">ผกก.ลงนาม</option>
                                                 <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
                                                 <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
@@ -320,7 +320,7 @@ desired effect
                                         </div>
                                         <div class="form-group">
                                             <label>ประเภทคดี</label>
-                                            <select class="form-control"  ng-model="frm.d1" >
+                                            <select class="form-control"  ng-model="fields.d1" >
                                                 <option value="">ผกก.ลงนาม</option>
                                                 <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
                                                 <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
@@ -328,7 +328,7 @@ desired effect
                                         </div>
                                         <div class="form-group">
                                             <label>ความสำคัญของคดี</label>
-                                            <select class="form-control"  ng-model="frm.d2" >
+                                            <select class="form-control"  ng-model="fields.d2" >
                                                 <option value="">ผกก.ลงนาม</option>
                                                 <option value="รอง ผอ.ฯปรท.">ปฏิบัติราชการแทน</option>
                                                 <option value="รอง ผอ.ฯรรท.">รักษาราชการแทน</option>
@@ -344,13 +344,13 @@ desired effect
                                     </div><!-- /.box-header -->
                                     <div class="box-body" >
                                         <div class="form-group" >
-                                            <div class="checkbox" ng-repeat="x in datasKe" >
-
+                                            <div class="checkbox" ng-repeat="x in datasKe"  >
                                                 <label>
-                                                    <input type="checkbox" checklist-model="user.datasKe" checklist-value="x">
-                                                    {{ x.fname}}
+                                                <input type="checkbox"  value={{'{eid:'+x.eid+',rid:'+fields.rid+'}'}}{{model}}/>
+                                                    {{x.fname}}
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="{{x.counts}}" />
+                                                <input type="text" class="form-control" placeholder="{{x.counts}}" ng-model= "model"  />
+
                                             </div>
                                         </div>
 

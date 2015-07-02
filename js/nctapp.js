@@ -1,4 +1,4 @@
-var app = angular.module("nctApp", ["checklist-model"]);
+var app = angular.module("nctApp", []);
 
 app.controller("dataCtrl", function ($scope, $http) {
     name = "datacontroller";
@@ -12,6 +12,8 @@ app.controller("dataCtrl", function ($scope, $http) {
 
 
 app.controller("frmCtrl", function ($scope, $http){
+
+    $scope.value = "";
     name = "fromController";
     $http.get("../php/unitCtrl.php")
         .success(function (response) {
@@ -28,22 +30,24 @@ app.controller("frmCtrl", function ($scope, $http){
         });
     $http.get("../php/keCtrl.php")
         .success(function (response) {
-
+            $scope.i=0;
             $scope.datasKe = response;
             console.log($scope.datasKe);
         });
     $scope.submitMyForm=function(fields){
+
         this.field = fields;/* while compiling form , angular created this object*/
         fields.rdate = $("#rdate").val();
         fields.rtime = $("#rtime").val();
         fields.sdate = $("#sdate").val();
         fields.stime = $("#stime").val();
 
-        var data =  angular.toJson(fields);
+        var data =  fields;
 
 
        /* post to server*/
         console.log(data);
+
 
 
 

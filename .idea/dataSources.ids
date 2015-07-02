@@ -28,6 +28,7 @@
       <column name="fname" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" remarks="4LiK4Li34LmI4Lit4LmA4LiV4LmH4Lih"/>
       <column name="counts" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="4LiI4Liz4LiZ4Lin4LiZ4LiZ4Lix4Lia"/>
       <column name="cost" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="4Lij4Liy4LiE4Liy4LiV4LmI4Lit4Lir4LiZ4LmI4Lin4Lii"/>
+      <column name="model" sqlType="CHAR" precision="3" scale="0" nullable="true" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="eid"/>
     </table>
     <table name="report" schema="" catalog="nctapp" type="TABLE">
